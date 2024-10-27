@@ -1,0 +1,29 @@
+version: '1'
+
+services:
+  db:
+    image: 'postgres:latest'
+    container_name: postgres-container
+    ports:
+      - 5432:5432
+    volumes: 
+      - postgresql-volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "database"
+      POSTGRES_DB: testdb
+      
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   container_name: pgadmin-container
+  #   tty: true
+  #   environment:
+  #     - PGADMIN_DEFAULT_EMAIL=jonatas.calves@gmail.com
+  #     - PGADMIN_DEFAULT_PASSWORD=database
+  #   ports:
+  #     - 9000:80
+  #   depends_on:
+  #     - db
+
+volumes:
+  postgresql-volume:
